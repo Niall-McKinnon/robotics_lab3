@@ -5,7 +5,7 @@ import numpy as np
 # example = [5, 10, 15, 20] # random values for testing purposes
 
 def dh_transformation(DH):
-	# NOTE: assumes DH is in order [theta, Ai, Di, alpha] as in the lecture powerpoint
+	# NOTE: assumes DH is a list in order [theta, Ai, Di, alpha] as in the lecture powerpoint
 	
 	# Get variables from input:
 	theta = DH[0]# link length
@@ -23,7 +23,7 @@ def dh_transformation(DH):
 	return DH
 
 # testing:
-example = [5, 10, 15, 20] # random values for testing purposes
+# example = [5, 10, 15, 20] # random values for testing purposes
 # print(dh_transformation(example))
 
 def kinematic_chain(DH):
