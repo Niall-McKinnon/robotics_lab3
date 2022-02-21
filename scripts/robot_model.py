@@ -8,10 +8,10 @@ def dh_transformation(DH):
 	# NOTE: assumes DH is in order [theta, Ai, Di, alpha] as in the lecture powerpoint
 	
 	# Get variables from input:
-	Ai = DH[0]# link length
-	alpha = DH[1] # link twist
-	theta = DH[2] # joint angle
-	Di = DH[3] # link offset
+	theta = DH[0]# link length
+	Ai = DH[1] # link twist
+	Di = DH[2] # joint angle
+	alpha = DH[3] # link offset
 	
 	# Generate combined homogenous transformation:
 	DH = np.array([[math.cos(theta), (-math.sin(theta)*math.cos(alpha)), (math.sin(theta)*math.sin(alpha)), Ai*math.cos(theta)],
@@ -33,6 +33,7 @@ def kinematic_chain(DH):
 	
 	for row in DH: # Get data for each individual segment
 		# NOTE: Assumes row is in order [theta, Ai, Di, alpha] as in the lecture powerpoint
+		# Calculate homogeneous transformation for each row and multiply all transformations together:
 		total_trans = np.matmul(total_trans, dh_transformation(row))
 	
 	return total_trans
